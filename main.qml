@@ -1,6 +1,5 @@
 import QtQuick 2.13
 import QtQuick.Window 2.13
-import "script.js" as API
 
 
 
@@ -11,12 +10,6 @@ Window {
     color: "#000000"
     title: qsTr("Board Computer")
     flags: Qt.FramelessWindowHint | Qt.Window
-
-    Component.onCompleted: {
-        API.blinkEngine(rectangle, 0)
-    }
-
-
 
     Item {
         id: gird
@@ -203,8 +196,6 @@ Window {
             width: 129
             height: 348
 
-
-
             Rectangle {
                 id: engine_temp
                 objectName: "engine_temp"
@@ -212,10 +203,7 @@ Window {
                 y: 1
                 width: 127
                 height: 49
-                color: "#feef09"
-                Component.onCompleted: {
-                    blinkEngine(engine_temp, 0)
-                }
+                color: backend.engine_temp_color
 
                 Text {
                     id: engine_temp_text
@@ -263,7 +251,7 @@ Window {
                 y: 50
                 width: 127
                 height: 49
-                color: "#ff0000"
+                color: backend.oil_temp_color
                 Text {
                     id: oil_temp_text
                     x: 1
@@ -286,7 +274,7 @@ Window {
                 y: 99
                 width: 127
                 height: 49
-                color: "#ff0000"
+                color: backend.battery_status_color
                 Text {
                     id: battery_status_text
                     x: 1
@@ -309,7 +297,7 @@ Window {
                 y: 148
                 width: 127
                 height: 49
-                color: "#ff0000"
+                color: backend.serial_status_color
                 Text {
                     id: serial_status_text
                     x: 1
@@ -329,13 +317,13 @@ Window {
         }
 
         Text {
-            id: display
+            id: total_distance_display
             x: 400
             y: 413
             width: 400
             height: 67
             color: "#ffffff"
-            text: qsTr("9,12 km/h")
+            text: backend.total_distance
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.family: "Arial"
@@ -349,7 +337,7 @@ Window {
             width: 400
             height: 67
             color: "#ffffff"
-            text: qsTr("3:10:23")
+            text: backend.lap_time
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.family: "Arial"
@@ -363,7 +351,7 @@ Window {
             width: 400
             height: 67
             color: "#ffffff"
-            text: qsTr("30,1 km/h")
+            text: backend.average_speed
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.family: "Arial"
@@ -377,7 +365,7 @@ Window {
             width: 400
             height: 67
             color: "#ffffff"
-            text: qsTr("25 km/h")
+            text: backend.cruise_control
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             font.family: "Arial"
@@ -398,7 +386,7 @@ Window {
                 width: 387
                 height: 222
                 color: "#ffffff"
-                text: qsTr("23,7")
+                text: backend.speed_string
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.family: "Arial"
@@ -419,11 +407,5 @@ Window {
                 font.pixelSize: 54
             }
         }
-
-
-
-
-
-
     }
 }

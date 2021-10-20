@@ -1,4 +1,4 @@
-QT += quick serialport
+QT += quick serialport widgets
 
 CONFIG += c++11
 CONFIG += qmltypes
@@ -19,10 +19,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         backend.cpp \
+        debug_window.cpp \
+        lapengine.cpp \
         main.cpp \
         signalviewengine.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += \
+    qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -37,5 +40,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     backend.h \
+    debug_window.h \
+    lapengine.h \
     signalviewengine.h
 
