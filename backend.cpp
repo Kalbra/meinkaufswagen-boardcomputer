@@ -24,9 +24,6 @@ BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_brid
     test.total_distance = 33.1;
 
     updateDisplay(test);
-
-
-    lap_engine->NewLap();
 }
 
 

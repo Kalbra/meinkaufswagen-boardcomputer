@@ -7,7 +7,6 @@ LapEngine::LapEngine(QMLBridge *qml_bridge) : qml_bridge(qml_bridge) {
     QTimer *timer = new QTimer();
     connect(timer, &QTimer::timeout, this, &LapEngine::updateLapField);
     timer->start();
-
 }
 
 void LapEngine::NewLap(){
