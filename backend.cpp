@@ -2,7 +2,7 @@
 
 
 BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_bridge){
-    SerialEngine *serial_engine = new SerialEngine(port_name);
+    serial_engine = new SerialEngine(qml_bridge, port_name);
     serial_engine->moveToThread(&serialThread);
     serialThread.start();
 
@@ -46,11 +46,5 @@ void BackEnd::LapTrigger(){
 
 void BackEnd::Reset(){
     lap_engine->reset();
-}
-
-
-void BackEnd::SerialRead(){
-    qDebug() << "New data available: " << serial.bytesAvailable();
-    QByteArray datas = serial.readAll();
-    qDebug() << datas;
+    serial_engine->reset();
 }

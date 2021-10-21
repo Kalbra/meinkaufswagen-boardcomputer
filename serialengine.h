@@ -4,7 +4,20 @@
 #include <QObject>
 #include <QThread>
 #include <QSerialPort>
+#include <chrono>
 #include <QDebug>
+#include "lapengine.h"
+#include "qmlbridge.h"
+
+#define WHEEL_CIRCUMFERENCE 20//IN CM
+#define SERIAL_TIME_OFFSET -0.01
+
+#define SPEED_EVENT 0
+#define LAP_EVENT   1
+#define BREAK_EVENT 2
+#define INFO_EVENT  3
+
+using namespace std::chrono;
 
 class SerialEngine : public QObject
 {
@@ -12,7 +25,8 @@ class SerialEngine : public QObject
     QThread serialThread;
 
 public:
-    SerialEngine(QString port_name);
+    SerialEngine(QMLBridge *qml_bridge, QString port_name);
+    void reset();
 
 public slots:
 
@@ -23,10 +37,10 @@ signals:
 
 private:
     QSerialPort serial;
+    QMLBridge *qml_bridge;
+    uint64_t total_speed_triggers = 0;
 
-
-    void speed_trigger();
-
+    high_resolution_clock::time_point last_speed_trigger = high_resolution_clock::now();
 };
 
 #endif // SERIALENGINE_H

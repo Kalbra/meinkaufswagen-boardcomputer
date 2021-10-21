@@ -131,6 +131,7 @@ signals:
     //Battery charge
     void battery_chargeChanged();
 
+
     //Lap display
     void lap_displayChanged();
     void delta1Changed();

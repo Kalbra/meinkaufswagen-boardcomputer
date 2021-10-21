@@ -44,7 +44,7 @@ signals:
 
 
 private slots:
-    void SerialRead();
+
 
 public slots:
     //void GasPoti(float value);
@@ -59,10 +59,8 @@ protected:
 
 private:
     QMLBridge *qml_bridge;
-
-    QSerialPort serial;
-
-     LapEngine *lap_engine = new LapEngine(qml_bridge);
+    SerialEngine *serial_engine;
+    LapEngine *lap_engine = new LapEngine(qml_bridge);
 
 };
 
