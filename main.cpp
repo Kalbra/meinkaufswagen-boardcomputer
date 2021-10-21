@@ -4,6 +4,7 @@
 #include <QQmlContext>
 #include <QPushButton>
 #include "backend.h"
+#include "qmlbridge.h"
 #include "debug_window.h"
 
 /* TODO:
@@ -31,7 +32,7 @@
  *
  * X q proberty für alle anderen werte
  * - zweites menu mit allen daten
- * - laptime engine
+ * X laptime engine
  * - tempomat
  *
  *
@@ -54,9 +55,12 @@ int main(int argc, char *argv[]){
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
 
-    BackEnd *backend = new BackEnd("COM1");
-    engine.rootContext()->setContextProperty("backend", backend);
+    QMLBridge *qml_bridge = new QMLBridge();
+    engine.rootContext()->setContextProperty("qml_bridge", qml_bridge);
     engine.load(url);
+
+    BackEnd *backend = new BackEnd(qml_bridge, "COM16");
+
 
     Debug debug_window(backend);
     debug_window.show();

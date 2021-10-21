@@ -3,23 +3,29 @@
 
 #include <QObject>
 #include <QDateTime>
+#include <QTime>
+#include <QTimer>
 #include <QDebug>
-#include "backend.h"
+#include <cmath>
+#include "qmlbridge.h"
 
-struct
 
 class LapEngine : public QObject
 {
     Q_OBJECT
 
 public:
-    LapEngine();
+    LapEngine(QMLBridge *qml_bridge);
     void NewLap();
-    void updateLapDisplay(BackEnd *backend);
+    void updateLapDisplay();
+    void updateLapField();
+    void reset();
 
 private:
+    QMLBridge *qml_bridge;
 
     QVector<QDateTime> lap_times;
+
 };
 
 #endif // LAPENGINE_H

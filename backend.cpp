@@ -1,22 +1,17 @@
 #include "backend.h"
-#include "signalviewengine.h"
-
-BackEnd::BackEnd(QString port_name){
 
 
-    serial.setPortName(port_name);
-    serial.setBaudRate(QSerialPort::Baud115200);
-
-    if(!serial.open(QIODevice::ReadOnly)){
-        qDebug() << serial.errorString();
-    }
+BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_bridge){
+    SerialEngine *serial_engine = new SerialEngine(port_name);
+    serial_engine->moveToThread(&serialThread);
+    serialThread.start();
 
     //QObject::connect(&serial, &QSerialPort::readyRead, SerialRead);
 
-    SignalViewEngine *engine_temp = new SignalViewEngine(this, ENGINE_TEMP);
-    SignalViewEngine *oil_temp = new SignalViewEngine(this, OIL_TEMP);
-    SignalViewEngine *battery_status = new SignalViewEngine(this, BATTERY_STATUS);
-    SignalViewEngine *serial_status = new SignalViewEngine(this, SERIAL_STATUS);
+    SignalViewEngine *engine_temp = new SignalViewEngine(qml_bridge, ENGINE_TEMP);
+    SignalViewEngine *oil_temp = new SignalViewEngine(qml_bridge, OIL_TEMP);
+    SignalViewEngine *battery_status = new SignalViewEngine(qml_bridge, BATTERY_STATUS);
+    SignalViewEngine *serial_status = new SignalViewEngine(qml_bridge, SERIAL_STATUS);
 
     engine_temp->error();
     //battery_status->waring();
@@ -31,15 +26,14 @@ BackEnd::BackEnd(QString port_name){
     updateDisplay(test);
 
 
-    lap_engine.NewLap();
-
+    lap_engine->NewLap();
 }
 
 
 void BackEnd::updateDisplay(Packet value){
-    setSpeed(QString::number(value.current_speed, 'f', 1));
-    setTotal_distance(QString(QString::number(value.total_distance, 'f', 2) + "km"));
-    setBattery_charge(QString(QString::number(value.battery_charge, 'f', 2) + "V"));
+    qml_bridge->setSpeed(QString::number(value.current_speed, 'f', 1));
+    qml_bridge->setTotal_distance(QString(QString::number(value.total_distance, 'f', 2) + "km"));
+    qml_bridge->setBattery_charge(QString(QString::number(value.battery_charge, 'f', 2) + "V"));
 }
 
 void BackEnd::SwitchMenuButton(){
@@ -47,7 +41,11 @@ void BackEnd::SwitchMenuButton(){
 }
 
 void BackEnd::LapTrigger(){
-    //lap_engine.NewLap();
+    lap_engine->NewLap();
+}
+
+void BackEnd::Reset(){
+    lap_engine->reset();
 }
 
 

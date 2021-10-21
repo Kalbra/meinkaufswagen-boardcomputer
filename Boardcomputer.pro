@@ -22,6 +22,8 @@ SOURCES += \
         debug_window.cpp \
         lapengine.cpp \
         main.cpp \
+        qmlbridge.cpp \
+        serialengine.cpp \
         signalviewengine.cpp
 
 RESOURCES += \
@@ -42,5 +44,7 @@ HEADERS += \
     backend.h \
     debug_window.h \
     lapengine.h \
+    qmlbridge.h \
+    serialengine.h \
     signalviewengine.h
 

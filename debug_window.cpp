@@ -13,6 +13,7 @@ Debug::Debug(BackEnd *backend){
     QPushButton *cruise_control_low = new QPushButton("Cruise Control Low");
     QPushButton *lap_trigger = new QPushButton("Lap Trigger");
     QPushButton *light_tigger = new QPushButton("Light Trigger");
+    QPushButton *reset_tigger = new QPushButton("Reset");
 
     QHBoxLayout *layout = new QHBoxLayout(window);
     layout->addWidget(switch_menu);
@@ -22,10 +23,11 @@ Debug::Debug(BackEnd *backend){
     layout->addWidget(cruise_control_low);
     layout->addWidget(lap_trigger);
     layout->addWidget(light_tigger);
+    layout->addWidget(reset_tigger);
 
     connect(switch_menu, &QPushButton::clicked, backend, &BackEnd::SwitchMenuButton);
-
     connect(lap_trigger, &QPushButton::clicked, backend, &BackEnd::LapTrigger);
+    connect(reset_tigger, &QPushButton::clicked, backend, &BackEnd::Reset);
 
     window->show();
 }

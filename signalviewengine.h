@@ -17,14 +17,14 @@
 #include <QQmlProperty>
 #include <QQuickItem>
 #include <qqml.h>
-#include "backend.h"
+#include "qmlbridge.h"
 
 class SignalViewEngine : public QObject
 {
     Q_OBJECT
 
 public:
-    SignalViewEngine(BackEnd *backend, uint8_t signal_type);
+    SignalViewEngine(QMLBridge *qml_bridge, uint8_t signal_type);
 
     void error(){raisetype = ERROR;}
     void waring(){raisetype = WARNING;}
@@ -43,7 +43,7 @@ private:
 
     bool on_off = true;
     QString color = "red";
-    BackEnd *backend;
+    QMLBridge *qml_bridge;
 };
 
 #endif // SIGNALVIEWENGINE_H

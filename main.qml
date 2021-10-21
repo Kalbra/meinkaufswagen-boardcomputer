@@ -9,7 +9,7 @@ Window {
     height: 480
     color: "#000000"
     title: qsTr("Board Computer")
-    flags: Qt.FramelessWindowHint | Qt.Window
+    //flags: Qt.FramelessWindowHint | Qt.Window
 
     Item {
         id: gird
@@ -110,8 +110,8 @@ Window {
                 y: 26
                 width: 176
                 height: 47
-                color: "#ff0000"
-                text: qsTr("+ 1,22")
+                color: qml_bridge.delta1_color
+                text: qml_bridge.delta1
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.family: "Arial"
@@ -124,8 +124,8 @@ Window {
                 y: 73
                 width: 176
                 height: 47
-                color: "#00ff22"
-                text: qsTr("- 0,56")
+                color: qml_bridge.delta2_color
+                text: qml_bridge.delta2
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.family: "Arial"
@@ -138,8 +138,8 @@ Window {
                 y: 120
                 width: 176
                 height: 47
-                color: "#ff0000"
-                text: qsTr("+ 1,22")
+                color: qml_bridge.delta3_color
+                text: qml_bridge.delta3
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.family: "Arial"
@@ -152,8 +152,8 @@ Window {
                 y: 168
                 width: 176
                 height: 47
-                color: "#ff0000"
-                text: qsTr("+ 1,22")
+                color: qml_bridge.delta4_color
+                text: qml_bridge.delta4
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.family: "Arial"
@@ -166,8 +166,8 @@ Window {
                 y: 216
                 width: 176
                 height: 47
-                color: "#ff0000"
-                text: qsTr("+ 1,22")
+                color: qml_bridge.delta5_color
+                text: qml_bridge.delta5
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.family: "Arial"
@@ -180,8 +180,8 @@ Window {
                 y: 264
                 width: 176
                 height: 47
-                color: "#ff0000"
-                text: qsTr("+ 1,22")
+                color: qml_bridge.delta6_color
+                text: qml_bridge.delta6
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.family: "Arial"
@@ -203,7 +203,7 @@ Window {
                 y: 1
                 width: 127
                 height: 49
-                color: backend.engine_temp_color
+                color: qml_bridge.engine_temp_color
 
                 Text {
                     id: engine_temp_text
@@ -251,7 +251,7 @@ Window {
                 y: 50
                 width: 127
                 height: 49
-                color: backend.oil_temp_color
+                color: qml_bridge.oil_temp_color
                 Text {
                     id: oil_temp_text
                     x: 1
@@ -274,7 +274,7 @@ Window {
                 y: 99
                 width: 127
                 height: 49
-                color: backend.battery_status_color
+                color: qml_bridge.battery_status_color
                 Text {
                     id: battery_status_text
                     x: 1
@@ -297,7 +297,7 @@ Window {
                 y: 148
                 width: 127
                 height: 49
-                color: backend.serial_status_color
+                color: qml_bridge.serial_status_color
                 Text {
                     id: serial_status_text
                     x: 1
@@ -323,7 +323,7 @@ Window {
             width: 400
             height: 67
             color: "#ffffff"
-            text: backend.total_distance
+            text: qml_bridge.total_distance
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.family: "Arial"
@@ -337,7 +337,7 @@ Window {
             width: 400
             height: 67
             color: "#ffffff"
-            text: backend.lap_time
+            text: qml_bridge.lap_time
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.family: "Arial"
@@ -351,7 +351,7 @@ Window {
             width: 400
             height: 67
             color: "#ffffff"
-            text: backend.average_speed
+            text: qml_bridge.average_speed
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.family: "Arial"
@@ -365,7 +365,7 @@ Window {
             width: 400
             height: 67
             color: "#ffffff"
-            text: backend.cruise_control
+            text: qml_bridge.cruise_control
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             font.family: "Arial"
@@ -386,7 +386,7 @@ Window {
                 width: 387
                 height: 222
                 color: "#ffffff"
-                text: backend.speed_string
+                text: qml_bridge.speed_string
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 font.family: "Arial"

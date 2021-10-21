@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QHBoxLayout>
+#include <QApplication>
 #include "backend.h"
 
 class Debug : public QWidget
@@ -12,9 +13,8 @@ class Debug : public QWidget
 public:
     Debug(BackEnd *backend);
 
-signals:
+private:
 
-public slots:
 };
 
 #endif // DEBUG_H
