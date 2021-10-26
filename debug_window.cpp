@@ -44,5 +44,5 @@ void Debug::enterGas(){
 
 
 
-    //backend->GasPoti(gas_input->text().toUInt());
+    backend->GasPoti(gas_input->text().toUInt());
 }

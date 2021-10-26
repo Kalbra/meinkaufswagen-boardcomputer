@@ -15,17 +15,6 @@
 #include "qmlbridge.h"
 #include "serialengine.h"
 
-//The data packet
-struct Packet{
-    double current_speed;
-    double total_distance;
-    double battery_charge;
-
-    bool break_trigger;
-    bool lap_trigger;
-};
-
-
 class BackEnd : public QObject
 {
     Q_OBJECT
@@ -33,9 +22,6 @@ class BackEnd : public QObject
 
 public:
     BackEnd(QMLBridge *qml_bridge, QString port_name);
-
-    //Update display
-    void updateDisplay(Packet value);
 
     //Resets all date like total time or distance
     void Reset();

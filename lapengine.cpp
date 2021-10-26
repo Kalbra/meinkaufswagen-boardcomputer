@@ -114,8 +114,13 @@ void LapEngine::updateLapDisplay(){
 //Update the left bottom field which shows the current lap time
 void LapEngine::updateLapField(){
     qint64 current_lap = QDateTime::currentDateTime().toMSecsSinceEpoch() - lap_times[0].toMSecsSinceEpoch();
+    QString time_string = QTime::fromMSecsSinceStartOfDay(current_lap).toString("mm:ss:zzz");
 
-    qml_bridge->setLap_time(QString(QTime::fromMSecsSinceStartOfDay(current_lap).toString("mm:ss:zzz")));
+    //If no time set a placeholder (-- --)
+    if(time_string == ""){
+        time_string = "-- --";
+    }
+    qml_bridge->setLap_time(time_string);
 }
 
 void LapEngine::reset(){

@@ -17,20 +17,16 @@ BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_brid
     //oil_temp->waring();
     serial_status->error();
 
-    Packet test;
-    test.current_speed = 32.1122;
-    test.battery_charge = 42.1222;
-    test.total_distance = 33.1;
-
-    updateDisplay(test);
+    //Setting the placeholders at the fields
+    Reset();
 }
 
-
+/*
 void BackEnd::updateDisplay(Packet value){
     qml_bridge->setSpeed(QString::number(value.current_speed, 'f', 1));
     qml_bridge->setTotal_distance(QString(QString::number(value.total_distance, 'f', 2) + "km"));
     qml_bridge->setBattery_charge(QString(QString::number(value.battery_charge, 'f', 2) + "V"));
-}
+}*/
 
 void BackEnd::SwitchMenuButton(){
 
@@ -40,7 +36,17 @@ void BackEnd::LapTrigger(){
     lap_engine->NewLap();
 }
 
+void BackEnd::GasPoti(uint level){
+    qDebug() << level;
+}
+
 void BackEnd::Reset(){
     lap_engine->reset();
     serial_engine->reset();
+
+    //The lap time will update in lapengine updateLapField()
+    qml_bridge->setSpeed("-- --");
+    qml_bridge->setAverage_speed("-- --");
+    qml_bridge->setTotal_distance("-- --");
+    qml_bridge->setCruise_control("-- --");
 }
