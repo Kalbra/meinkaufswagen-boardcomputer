@@ -25,7 +25,7 @@ class SerialEngine : public QObject
     QThread serialThread;
 
 public:
-    SerialEngine(QMLBridge *qml_bridge, QString port_name);
+    SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString port_name);
     void reset();
 
 public slots:
@@ -38,6 +38,7 @@ signals:
 private:
     QSerialPort serial;
     QMLBridge *qml_bridge;
+    LapEngine *lap_engine;
     uint64_t total_speed_triggers = 0;
 
     high_resolution_clock::time_point last_speed_trigger = high_resolution_clock::now();

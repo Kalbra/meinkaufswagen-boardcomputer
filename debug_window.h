@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <QLineEdit>
 #include <QHBoxLayout>
 #include <QApplication>
 #include "backend.h"
@@ -13,7 +14,12 @@ class Debug : public QWidget
 public:
     Debug(BackEnd *backend);
 
+private slots:
+    void enterGas();
+
 private:
+    BackEnd *backend;
+    QLineEdit *gas_input;
 
 };
 

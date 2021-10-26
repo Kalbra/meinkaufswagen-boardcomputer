@@ -1,7 +1,7 @@
 #include "debug_window.h"
 
 
-Debug::Debug(BackEnd *backend){
+Debug::Debug(BackEnd *backend): backend(backend){
     this->setWindowTitle("Debug Window");
 
     QWidget *window = new QWidget(this);
@@ -14,6 +14,8 @@ Debug::Debug(BackEnd *backend){
     QPushButton *lap_trigger = new QPushButton("Lap Trigger");
     QPushButton *light_tigger = new QPushButton("Light Trigger");
     QPushButton *reset_tigger = new QPushButton("Reset");
+    gas_input = new QLineEdit("");
+    QPushButton *enter_gas = new QPushButton("Enter GAS");
 
     QHBoxLayout *layout = new QHBoxLayout(window);
     layout->addWidget(switch_menu);
@@ -24,10 +26,23 @@ Debug::Debug(BackEnd *backend){
     layout->addWidget(lap_trigger);
     layout->addWidget(light_tigger);
     layout->addWidget(reset_tigger);
+    layout->addWidget(gas_input);
+    layout->addWidget(enter_gas);
 
     connect(switch_menu, &QPushButton::clicked, backend, &BackEnd::SwitchMenuButton);
     connect(lap_trigger, &QPushButton::clicked, backend, &BackEnd::LapTrigger);
     connect(reset_tigger, &QPushButton::clicked, backend, &BackEnd::Reset);
+    connect(enter_gas, &QPushButton::clicked, this, &Debug::enterGas);
 
     window->show();
+}
+
+void Debug::enterGas(){
+
+
+    //LOOK HERE
+
+
+
+    //backend->GasPoti(gas_input->text().toUInt());
 }

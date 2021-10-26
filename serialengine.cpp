@@ -1,6 +1,6 @@
 #include "serialengine.h"
 
-SerialEngine::SerialEngine(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_bridge){
+SerialEngine::SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString port_name) : qml_bridge(qml_bridge), lap_engine(lap_engine){
     serial.setPortName(port_name);
     serial.setBaudRate(QSerialPort::Baud115200);
 
@@ -34,8 +34,10 @@ void SerialEngine::dataEvaluate(){
 
             break;
         }
-        case LAP_EVENT:
+        case LAP_EVENT: {
+            lap_engine->NewLap();
             break;
+        }
         case BREAK_EVENT:
             break;
         case INFO_EVENT:

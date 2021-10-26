@@ -47,7 +47,7 @@ private slots:
 
 
 public slots:
-    //void GasPoti(float value);
+    void GasPoti(uint value);
     //void CruiseControlTriggerButton();
     //void CruiseControlUpButton();
     //void CruiseControlDownButton();

@@ -2,11 +2,10 @@
 
 
 BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_bridge){
-    serial_engine = new SerialEngine(qml_bridge, port_name);
+    serial_engine = new SerialEngine(qml_bridge, lap_engine, port_name);
     serial_engine->moveToThread(&serialThread);
     serialThread.start();
 
-    //QObject::connect(&serial, &QSerialPort::readyRead, SerialRead);
 
     SignalViewEngine *engine_temp = new SignalViewEngine(qml_bridge, ENGINE_TEMP);
     SignalViewEngine *oil_temp = new SignalViewEngine(qml_bridge, OIL_TEMP);
