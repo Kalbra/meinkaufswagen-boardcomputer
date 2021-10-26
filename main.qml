@@ -227,16 +227,16 @@ Window {
                 y: 298
                 width: 127
                 height: 49
-                color: "#d500c7"
+                color: qml_bridge.light_color
 
                 Text {
-                    id: ignore_text
+                    id: light_text
                     x: 0
                     y: 0
                     width: 127
                     height: 49
                     color: "#ffffff"
-                    text: qsTr("IGNR")
+                    text: qsTr("LIGT")
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                     font.family: "Arial"

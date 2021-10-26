@@ -40,6 +40,7 @@ public slots:
     //void IgnoreTriggerButton();
     void SwitchMenuButton();
     void LapTrigger();
+    void LightTrigger();
 
 protected:
 
@@ -47,6 +48,8 @@ private:
     QMLBridge *qml_bridge;
     SerialEngine *serial_engine;
     LapEngine *lap_engine = new LapEngine(qml_bridge);
+
+    bool light_on = false;
 
 };
 

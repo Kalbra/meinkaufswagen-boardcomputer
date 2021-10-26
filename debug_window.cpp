@@ -32,6 +32,7 @@ Debug::Debug(BackEnd *backend): backend(backend){
     connect(switch_menu, &QPushButton::clicked, backend, &BackEnd::SwitchMenuButton);
     connect(lap_trigger, &QPushButton::clicked, backend, &BackEnd::LapTrigger);
     connect(reset_tigger, &QPushButton::clicked, backend, &BackEnd::Reset);
+    connect(light_tigger, &QPushButton::clicked, backend, &BackEnd::LightTrigger);
     connect(enter_gas, &QPushButton::clicked, this, &Debug::enterGas);
 
     window->show();

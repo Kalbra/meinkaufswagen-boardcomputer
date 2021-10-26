@@ -28,6 +28,8 @@ class QMLBridge : public QObject
     Q_PROPERTY(QString cruse_control_color MEMBER cruse_control_color NOTIFY cruse_control_colorChanged)
     //Battery charge
     Q_PROPERTY(QString battery_charge MEMBER battery_charge NOTIFY battery_chargeChanged)
+    //Light color
+    Q_PROPERTY(QString light_color MEMBER light_color NOTIFY light_colorChanged)
 
     //Lap display
     Q_PROPERTY(QString delta1 MEMBER delta1 NOTIFY lap_displayChanged)
@@ -36,7 +38,7 @@ class QMLBridge : public QObject
     Q_PROPERTY(QString delta4 MEMBER delta4 NOTIFY lap_displayChanged)
     Q_PROPERTY(QString delta5 MEMBER delta5 NOTIFY lap_displayChanged)
     Q_PROPERTY(QString delta6 MEMBER delta6 NOTIFY lap_displayChanged)
-    //Color
+    //Lap display color
     Q_PROPERTY(QString delta1_color MEMBER delta1_color NOTIFY lap_displayChanged)
     Q_PROPERTY(QString delta2_color MEMBER delta2_color NOTIFY lap_displayChanged)
     Q_PROPERTY(QString delta3_color MEMBER delta3_color NOTIFY lap_displayChanged)
@@ -80,6 +82,11 @@ public:
     QString cruse_control_color;
     void setCruse_control_on(){cruse_control_color = "blue"; emit cruse_control_colorChanged();}
     void setCruse_control_off(){cruse_control_color = "white"; emit cruse_control_colorChanged();}
+
+    //Light color on/off
+    QString light_color;
+    void setLight_on(){light_color = "#00ff22"; emit light_colorChanged();}
+    void setLight_off(){light_color = "black"; emit light_colorChanged();}
 
     //Lap display
     QString delta1;
@@ -130,6 +137,8 @@ signals:
     void cruse_control_colorChanged();
     //Battery charge
     void battery_chargeChanged();
+    //Light color
+    void light_colorChanged();
 
 
     //Lap display

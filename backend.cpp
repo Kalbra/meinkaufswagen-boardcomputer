@@ -36,6 +36,17 @@ void BackEnd::LapTrigger(){
     lap_engine->NewLap();
 }
 
+void BackEnd::LightTrigger(){
+    if(light_on){
+        qml_bridge->setLight_off();
+        light_on = false;
+    }
+    else {
+        qml_bridge->setLight_on();
+        light_on = true;
+    }
+}
+
 void BackEnd::GasPoti(uint level){
     qDebug() << level;
 }
