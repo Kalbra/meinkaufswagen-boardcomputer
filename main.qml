@@ -1,5 +1,6 @@
 import QtQuick 2.13
 import QtQuick.Window 2.13
+import QtQuick.Controls 1.6
 
 
 
@@ -407,5 +408,15 @@ Window {
                 font.pixelSize: 54
             }
         }
+
+        ProgressBar {
+            id: rpm
+            x: 305
+            y: 390
+            width: 494
+            height: 23
+            value: 0.3
+            clip: true
+
     }
 }
