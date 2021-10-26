@@ -5,17 +5,16 @@
 
 - Lenkrad:
   -	Knöpfe
-    -	Menü wechseln
-    -	Ignore
-    -	Tempomat ein/aus
-    -	Tempomat hoch
-    -	Tempomat runter
+    -	Menü wechseln(Rot, links, 1)
+    -	Tempomat ein/aus(Grün, rechts, 2)
+    -	Tempomat hoch(Grün, links, 2)
+    -	Tempomat runter(Grün, links,3)
+    -	Lap trigger(Rot, rechts, 1)
+    -	Licht ein/aus(Gelb, rechts, 3)
   -	Paddel
     -	Gas
 
 - Serial read von Lenkrad aus:
-  -	(double) Geschwindigkeit
-  -	(double) Gesamtdistanz
   -	(double) Batterieladestand
   -	(bool) Rundentrigger
   -	(bool) Bremsentrigger
@@ -45,3 +44,4 @@ Structur send:
 |----------|------------|
 | uint16_t |   bool     |
 |  0 \| 1  |     2      | 
+
