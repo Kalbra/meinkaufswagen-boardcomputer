@@ -9,6 +9,8 @@ SerialEngine::SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString
     }
 
     connect(&serial, &QSerialPort::readyRead, this, &SerialEngine::dataEvaluate);
+
+    RPMCalc(1243);
 }
 
 void SerialEngine::dataEvaluate(){
@@ -45,6 +47,11 @@ void SerialEngine::dataEvaluate(){
         default:
             qDebug() << "Cant decode the serial data";
     }
+}
+
+void SerialEngine::RPMCalc(int rpm){
+    qDebug() << (rpm - MIN_RPM) * (799 - 494) / (MAX_RPM - MIN_RPM) + 494;
+    qml_bridge->setRPMProgressbar((rpm - MIN_RPM) * (799 - 494) / (MAX_RPM - MIN_RPM) + 494);
 }
 
 void SerialEngine::reset(){

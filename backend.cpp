@@ -17,6 +17,9 @@ BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_brid
     //oil_temp->waring();
     serial_status->error();
 
+    //Sets the display to the main field
+    qml_bridge->setDisplayField(0);
+
     //Setting the placeholders at the fields
     Reset();
 }
@@ -29,7 +32,11 @@ void BackEnd::updateDisplay(Packet value){
 }*/
 
 void BackEnd::SwitchMenuButton(){
-
+    display_id += 1;
+    if(display_id >= 2){
+        display_id = 0;
+    }
+    qml_bridge->setDisplayField(display_id);
 }
 
 void BackEnd::LapTrigger(){
@@ -60,4 +67,9 @@ void BackEnd::Reset(){
     qml_bridge->setAverage_speed("-- --");
     qml_bridge->setTotal_distance("-- --");
     qml_bridge->setCruise_control("-- --");
+    qml_bridge->setEngine_temp("-- --");
+    qml_bridge->setOil_temp("-- --");
+    qml_bridge->setBattery_charge("-- --");
+    qml_bridge->setTotal_time("-- --");
+    qml_bridge->setRPM("-- --");
 }

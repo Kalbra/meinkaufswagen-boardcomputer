@@ -22,7 +22,6 @@ SOURCES += \
         debug_window.cpp \
         lapengine.cpp \
         main.cpp \
-        qmlbridge.cpp \
         serialengine.cpp \
         signalviewengine.cpp
 

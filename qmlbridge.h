@@ -14,6 +14,9 @@ class QMLBridge : public QObject
     Q_PROPERTY(QString battery_status_color MEMBER battery_status_color NOTIFY battery_status_colorChanged)
     Q_PROPERTY(QString serial_status_color MEMBER serial_status_color NOTIFY serial_status_colorChanged)
 
+    //Setting display
+    Q_PROPERTY(uint display_id MEMBER display_id NOTIFY setting_displayChanged)
+
     //Speed
     Q_PROPERTY(QString speed_string MEMBER speed_string NOTIFY speed_stringChanged)
     //Average speed
@@ -30,6 +33,16 @@ class QMLBridge : public QObject
     Q_PROPERTY(QString battery_charge MEMBER battery_charge NOTIFY battery_chargeChanged)
     //Light color
     Q_PROPERTY(QString light_color MEMBER light_color NOTIFY light_colorChanged)
+    //RPM progressbar
+    Q_PROPERTY(int rpm_progressbar MEMBER rpm_progressbar NOTIFY rpm_progressbarChanged)
+    //Engine temp
+    Q_PROPERTY(QString engine_temp MEMBER engine_temp NOTIFY engine_tempChanged)
+    //Oil temp
+    Q_PROPERTY(QString oil_temp MEMBER oil_temp NOTIFY oil_tempChanged)
+    //Total time
+    Q_PROPERTY(QString total_time MEMBER total_time NOTIFY total_timeChanged)
+    //RPM
+    Q_PROPERTY(QString rpm MEMBER rpm NOTIFY rpmChanged)
 
     //Lap display
     Q_PROPERTY(QString delta1 MEMBER delta1 NOTIFY lap_displayChanged)
@@ -47,7 +60,7 @@ class QMLBridge : public QObject
     Q_PROPERTY(QString delta6_color MEMBER delta6_color NOTIFY lap_displayChanged)
 
 public:
-    QMLBridge();
+    QMLBridge(){}
 
     //Display signals
     QString engine_temp_color;
@@ -58,6 +71,10 @@ public:
     void setOil_temp_color(QString value){oil_temp_color = value; emit oil_temp_colorChanged();}
     void setBattery_status_color(QString value){battery_status_color = value; emit battery_status_colorChanged();}
     void setSerial_status_color(QString value){serial_status_color = value; emit serial_status_colorChanged();}
+
+    //Setting display
+    uint display_id;
+    void setDisplayField(uint value){display_id = value; emit setting_displayChanged();}
 
     //Speed
     QString speed_string;
@@ -77,6 +94,22 @@ public:
     //Battery charge
     QString battery_charge;
     void setBattery_charge(QString value){battery_charge = value; emit battery_chargeChanged();}
+    //RPM progressbar
+    int rpm_progressbar;
+    void setRPMProgressbar(int value){rpm_progressbar = value; emit rpm_progressbarChanged();}
+    //Engine temp
+    QString engine_temp;
+    void setEngine_temp(QString value){engine_temp = value; emit engine_tempChanged();}
+    //Oil temp
+    QString oil_temp;
+    void setOil_temp(QString value){oil_temp = value; emit oil_tempChanged();}
+    //Total time
+    QString total_time;
+    void setTotal_time(QString value){total_time = value; emit total_timeChanged();}
+    //RPM
+    QString rpm;
+    void setRPM(QString value){rpm = value; emit rpmChanged();}
+
 
     //Cruise control color on/off
     QString cruse_control_color;
@@ -123,6 +156,9 @@ signals:
     void battery_status_colorChanged();
     void serial_status_colorChanged();
 
+    //Setting display
+    void setting_displayChanged();
+
     //Speed
     void speed_stringChanged();
     //Average speed
@@ -139,6 +175,16 @@ signals:
     void battery_chargeChanged();
     //Light color
     void light_colorChanged();
+    //RPM progressbar
+    void rpm_progressbarChanged();
+    //Engine temp
+    void engine_tempChanged();
+    //Oil temp
+    void oil_tempChanged();
+    //Total time
+    void total_timeChanged();
+    //RPM
+    void rpmChanged();
 
 
     //Lap display

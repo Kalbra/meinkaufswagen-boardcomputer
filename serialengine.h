@@ -11,6 +11,8 @@
 
 #define WHEEL_CIRCUMFERENCE 20//IN CM
 #define SERIAL_TIME_OFFSET -0.01
+#define MAX_RPM 1000
+#define MIN_RPM 3000
 
 #define SPEED_EVENT 0
 #define LAP_EVENT   1
@@ -42,6 +44,7 @@ private:
     uint64_t total_speed_triggers = 0;
 
     high_resolution_clock::time_point last_speed_trigger = high_resolution_clock::now();
+    void RPMCalc(int rpm);
 };
 
 #endif // SERIALENGINE_H

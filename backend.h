@@ -50,6 +50,7 @@ private:
     LapEngine *lap_engine = new LapEngine(qml_bridge);
 
     bool light_on = false;
+    uint display_id = 0;
 
 };
 
