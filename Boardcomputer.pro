@@ -20,6 +20,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         backend.cpp \
         debug_window.cpp \
+        informationengine.cpp \
         lapengine.cpp \
         main.cpp \
         serialengine.cpp \
@@ -42,6 +43,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     backend.h \
     debug_window.h \
+    informationengine.h \
     lapengine.h \
     qmlbridge.h \
     serialengine.h \

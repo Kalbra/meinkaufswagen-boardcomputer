@@ -35,7 +35,11 @@ Types:
 - 0: Speed event
 - 1: Lap event
 - 2: Bremse event
-- 3: Information
+- 3-...: Information
+    - 3: Baterieladestand
+    - 4: Motortemperatur
+    - 5: Generatorstrom
+    - 6: Verbrauchstrom
 
 ---------------
 
