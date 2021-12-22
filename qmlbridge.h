@@ -43,6 +43,10 @@ class QMLBridge : public QObject
     Q_PROPERTY(QString total_time MEMBER total_time NOTIFY total_timeChanged)
     //RPM
     Q_PROPERTY(QString rpm MEMBER rpm NOTIFY rpmChanged)
+    //Generator current
+    Q_PROPERTY(QString generator_current MEMBER generator_current NOTIFY generator_currentChanged)
+    //Used current
+    Q_PROPERTY(QString used_current MEMBER used_current NOTIFY used_currentChanged)
 
     //Lap display
     Q_PROPERTY(QString delta1 MEMBER delta1 NOTIFY lap_displayChanged)
@@ -109,6 +113,12 @@ public:
     //RPM
     QString rpm;
     void setRPM(QString value){rpm = value; emit rpmChanged();}
+    //Generator current
+    QString generator_current;
+    void setGenerator_current(QString value){generator_current = value; emit generator_currentChanged();}
+    //Used current
+    QString used_current;
+    void setUsed_current(QString value){used_current = value; emit used_currentChanged();}
 
 
     //Cruise control color on/off
@@ -185,6 +195,10 @@ signals:
     void total_timeChanged();
     //RPM
     void rpmChanged();
+    //Generator current
+    void generator_currentChanged();
+    //Used current
+    void used_currentChanged();
 
 
     //Lap display

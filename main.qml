@@ -675,6 +675,34 @@ Window {
             font.family: "Arial"
             horizontalAlignment: Text.AlignHCenter
         }
+
+        Text {
+            id: generator_current
+            x: 400
+            y: 136
+            width: 400
+            height: 71
+            color: "#ffffff"
+            text: qml_bridge.generator_current
+            font.family: "Arial"
+            font.pixelSize: 53
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+        }
+
+        Text {
+            id: used_curent
+            x: 400
+            y: 205
+            width: 400
+            height: 71
+            color: "#ffffff"
+            text: qml_bridge.used_current
+            font.family: "Arial"
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: 53
+            verticalAlignment: Text.AlignVCenter
+        }
     }
 }
 

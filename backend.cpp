@@ -72,4 +72,6 @@ void BackEnd::Reset(){
     qml_bridge->setBattery_charge("-- --");
     qml_bridge->setTotal_time("-- --");
     qml_bridge->setRPM("-- --");
+    qml_bridge->setGenerator_current("-- --");
+    qml_bridge->setUsed_current("-- --");
 }
