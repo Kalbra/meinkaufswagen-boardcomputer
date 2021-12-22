@@ -10,11 +10,14 @@ SerialEngine::SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString
 
     connect(&serial, &QSerialPort::readyRead, this, &SerialEngine::dataEvaluate);
 
+    qDebug() << "dspof";
+    //Test
     RPMCalc(1243);
 }
 
 void SerialEngine::dataEvaluate(){
     QByteArray datas = serial.readAll();
+    qDebug() << "dksfj";
 
     switch (datas[0]) {
         case SPEED_EVENT: {
@@ -40,10 +43,26 @@ void SerialEngine::dataEvaluate(){
             lap_engine->NewLap();
             break;
         }
-        case BREAK_EVENT:
+        case BREAK_EVENT: {
             break;
-        case INFO_EVENT:
+        }
+        case INFO_EVENT_BATTERY_CHARGE: {
+            information_engine->setBatteryCharge(datas);
+            qDebug() << "lksdf";
             break;
+        }
+        case INFO_EVENT_ENGINE_TEMP: {
+            information_engine->setEngineTemp(datas);
+            break;
+        }
+        case INFO_EVENT_GENERATOR_CURRENT: {
+            information_engine->setGeneratorCurrent(datas);
+            break;
+        }
+        case INFO_EVENT_USED_CURRENT: {
+            information_engine->setUsedCurrend(datas);
+            break;
+        }
         default:
             qDebug() << "Cant decode the serial data";
     }

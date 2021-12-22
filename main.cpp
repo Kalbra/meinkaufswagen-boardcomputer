@@ -59,7 +59,7 @@ int main(int argc, char *argv[]){
     engine.rootContext()->setContextProperty("qml_bridge", qml_bridge);
     engine.load(url);
 
-    BackEnd *backend = new BackEnd(qml_bridge, "COM16");
+    BackEnd *backend = new BackEnd(qml_bridge, "COM5");
 
 
     Debug debug_window(backend);

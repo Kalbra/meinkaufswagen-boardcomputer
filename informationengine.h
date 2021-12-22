@@ -11,14 +11,13 @@ class InformationEngine : public QObject
 public:
     InformationEngine(QMLBridge *qml_bridge);
 
-
-private:
-    QMLBridge *qml_bridge;
-
     void setBatteryCharge(QByteArray data);
     void setEngineTemp(QByteArray data);
     void setGeneratorCurrent(QByteArray data);
     void setUsedCurrend(QByteArray data);
+
+private:
+    QMLBridge *qml_bridge;
 
 };
 
