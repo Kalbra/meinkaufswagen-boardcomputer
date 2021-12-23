@@ -1,14 +1,19 @@
 #include "serialengine.h"
 
-SerialEngine::SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString port_name) : qml_bridge(qml_bridge), lap_engine(lap_engine){
+SerialEngine::SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString port_name, SignalViewEngine *serial_status) : qml_bridge(qml_bridge), lap_engine(lap_engine){
     serial.setPortName(port_name);
     serial.setBaudRate(QSerialPort::Baud115200);
 
     if(!serial.open(QIODevice::ReadOnly)){
+        serial_status->error();
         qDebug() << serial.errorString();
     }
 
+    connect(&serial, &QSerialPort::errorOccurred, this, [&]{
+       serial_status->error();
+    });
     connect(&serial, &QSerialPort::readyRead, this, &SerialEngine::dataEvaluate);
+
 
     qDebug() << "dspof";
     //Test
@@ -17,7 +22,6 @@ SerialEngine::SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString
 
 void SerialEngine::dataEvaluate(){
     QByteArray datas = serial.readAll();
-    qDebug() << "dksfj";
 
     switch (datas[0]) {
         case SPEED_EVENT: {

@@ -2,20 +2,20 @@
 
 
 BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_bridge){
-    serial_engine = new SerialEngine(qml_bridge, lap_engine, port_name);
-    serial_engine->moveToThread(&serialThread);
-    serialThread.start();
-
-
     SignalViewEngine *engine_temp = new SignalViewEngine(qml_bridge, ENGINE_TEMP);
     SignalViewEngine *oil_temp = new SignalViewEngine(qml_bridge, OIL_TEMP);
     SignalViewEngine *battery_status = new SignalViewEngine(qml_bridge, BATTERY_STATUS);
     SignalViewEngine *serial_status = new SignalViewEngine(qml_bridge, SERIAL_STATUS);
 
+    serial_engine = new SerialEngine(qml_bridge, lap_engine, port_name, serial_status);
+    serial_engine->moveToThread(&serialThread);
+    serialThread.start();
+
+
     engine_temp->error();
     //battery_status->waring();
     //oil_temp->waring();
-    serial_status->error();
+    //serial_status->error();
 
     //Sets the display to the main field
     qml_bridge->setDisplayField(0);

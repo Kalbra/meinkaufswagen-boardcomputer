@@ -20,12 +20,22 @@ void InformationEngine::setUsedCurrend(QByteArray data){
     qml_bridge->setUsed_current(QString(QString::number(dataToDouble(data), 'f', 2) + " W"));
 }
 
+/*    double d = 70.976;
+    const unsigned char *ptr2 = (const unsigned char*)(&d);
+    for (int i = 0; i < 8; ++i)
+        fprintf(stderr, "%02x\n", ptr2[i]);
+*/
+
 
 double InformationEngine::dataToDouble(QByteArray data){
     data.remove(0, 1);
 
-    char tmp[8];
-    strncpy(tmp, data.data(), 8);
+    double out;
+    memcpy(&out, data.data(), sizeof out);
 
-    return atof(tmp);
+    return out;
+}
+
+void InformationEngine::checkLimits(uint8_t id){
+
 }

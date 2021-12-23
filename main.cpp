@@ -42,6 +42,9 @@
  */
 
 int main(int argc, char *argv[]){   
+    //The size of the double is important for the serial evulation
+    static_assert(sizeof(double) == 8, "The size of double is not 8");
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QApplication app(argc, argv);

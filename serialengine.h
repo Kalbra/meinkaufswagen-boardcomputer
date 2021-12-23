@@ -9,6 +9,7 @@
 #include "lapengine.h"
 #include "qmlbridge.h"
 #include "informationengine.h"
+#include "signalviewengine.h"
 
 #define WHEEL_CIRCUMFERENCE 20//IN CM
 #define SERIAL_TIME_OFFSET -0.01
@@ -31,7 +32,7 @@ class SerialEngine : public QObject
     QThread serialThread;
 
 public:
-    SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString port_name);
+    SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString port_name, SignalViewEngine *serial_status);
     void reset();
 
 public slots:
