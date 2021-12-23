@@ -19,6 +19,8 @@ public:
 private:
     QMLBridge *qml_bridge;
 
+    double dataToDouble(QByteArray data);
+
 };
 
 #endif // INFORMATIONENGINE_H

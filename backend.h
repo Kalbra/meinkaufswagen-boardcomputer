@@ -51,7 +51,6 @@ private:
 
     bool light_on = false;
     uint display_id = 0;
-
 };
 
 #endif // BACKEND_H
