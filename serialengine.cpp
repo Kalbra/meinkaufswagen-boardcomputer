@@ -10,8 +10,6 @@ SerialEngine::SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString
 
     connect(&serial, &QSerialPort::readyRead, this, &SerialEngine::dataEvaluate);
 
-    information_engine = new InformationEngine(qml_bridge);
-
     qDebug() << "dspof";
     //Test
     RPMCalc(1243);
