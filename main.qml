@@ -365,7 +365,7 @@ Window {
             y: 0
             width: 400
             height: 67
-            color: "#ffffff"
+            color: qml_bridge.cruse_control_color
             text: qml_bridge.cruise_control
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
@@ -386,7 +386,7 @@ Window {
                 y: 45
                 width: 387
                 height: 222
-                color: "#ffffff"
+                color: qml_bridge.cruse_control_color
                 text: qml_bridge.speed_string
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -400,7 +400,7 @@ Window {
                 y: 8
                 width: 129
                 height: 48
-                color: "#ffffff"
+                color: qml_bridge.cruse_control_color
                 text: qsTr("km/h")
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -584,7 +584,7 @@ Window {
             y: 0
             width: 400
             height: 67
-            color: "#ffffff"
+            color: qml_bridge.cruse_control_color
             text: qml_bridge.cruise_control
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 53
@@ -668,7 +668,7 @@ Window {
             y: 66
             width: 400
             height: 71
-            color: "#ffffff"
+            color: qml_bridge.cruse_control_color
             text: qml_bridge.speed_string + " km/h"
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 53

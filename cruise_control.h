@@ -11,7 +11,6 @@ class CruiseControl : public QObject
 public:
     CruiseControl(QMLBridge *qml_bridge);
     void evaluateGas(uint level);
-    void updateField();
 
     void reset();
 
@@ -21,10 +20,12 @@ public slots:
     void setOnOff(){on_off = !on_off; updateField();}
 
     void TargetSpeedUp(){target_speed += 1; updateField();}
+    //TODO: Not to go into negativ
     void TargetSpeedDown(){target_speed -= 1; updateField();}
 
 private:
     QMLBridge *qml_bridge;
+    void updateField();
 
     bool on_off;
     double target_speed;

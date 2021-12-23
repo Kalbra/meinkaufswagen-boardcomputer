@@ -13,7 +13,9 @@ BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_brid
     serial_engine->moveToThread(&serialThread);
     serialThread.start();
 
-
+    cruise_control = new CruiseControl(qml_bridge);
+ //connect(&serial, &QSerialPort::readyRead, this, &SerialEngine::dataEvaluate);
+    //connect(this, &BackEnd::CruiseControlTriggerButton, cruise_control, &CruiseControl::setOnOff);
     //engine_temp->error();
     //battery_status->waring();
     //oil_temp->waring();
@@ -25,13 +27,6 @@ BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_brid
     //Setting the placeholders at the fields
     Reset();
 }
-
-/*
-void BackEnd::updateDisplay(Packet value){
-    qml_bridge->setSpeed(QString::number(value.current_speed, 'f', 1));
-    qml_bridge->setTotal_distance(QString(QString::number(value.total_distance, 'f', 2) + "km"));
-    qml_bridge->setBattery_charge(QString(QString::number(value.battery_charge, 'f', 2) + "V"));
-}*/
 
 void BackEnd::SwitchMenuButton(){
     display_id += 1;
@@ -60,15 +55,28 @@ void BackEnd::GasPoti(uint level){
     qDebug() << level;
 }
 
+void BackEnd::CruiseControlUpButton(){
+    cruise_control->TargetSpeedUp();
+}
+
+void BackEnd::CruiseControlDownButton(){
+    cruise_control->TargetSpeedDown();
+}
+
+void BackEnd::CruiseControlTriggerButton(){
+    cruise_control->setOnOff();
+}
+
 void BackEnd::Reset(){
     lap_engine->reset();
     serial_engine->reset();
+    cruise_control->reset();
 
     //The lap time will update in lapengine updateLapField()
+    //Cruise control will update in cruise_control
     qml_bridge->setSpeed("-- --");
     qml_bridge->setAverage_speed("-- --");
     qml_bridge->setTotal_distance("-- --");
-    qml_bridge->setCruise_control("-- --");
     qml_bridge->setEngine_temp("-- --");
     qml_bridge->setOil_temp("-- --");
     qml_bridge->setBattery_charge("-- --");

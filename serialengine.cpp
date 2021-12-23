@@ -41,6 +41,8 @@ void SerialEngine::dataEvaluate(){
             total_speed_triggers += 1;
             qml_bridge->setTotal_distance(QString(QString::number(total_distance, 'f', 2) + "km"));
 
+            //lap_engine-
+
             break;
         }
         case LAP_EVENT: {

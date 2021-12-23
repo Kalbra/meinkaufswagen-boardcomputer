@@ -123,7 +123,7 @@ public:
 
     //Cruise control color on/off
     QString cruse_control_color;
-    void setCruse_control_on(){cruse_control_color = "blue"; emit cruse_control_colorChanged();}
+    void setCruse_control_on(){cruse_control_color = "#0080ff"; emit cruse_control_colorChanged();}
     void setCruse_control_off(){cruse_control_color = "white"; emit cruse_control_colorChanged();}
 
     //Light color on/off

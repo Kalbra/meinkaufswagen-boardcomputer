@@ -24,7 +24,8 @@ SOURCES += \
         lapengine.cpp \
         main.cpp \
         serialengine.cpp \
-        signalviewengine.cpp
+        signalviewengine.cpp \
+        cruise_control.cpp
 
 RESOURCES += \
     qml.qrc
@@ -47,5 +48,6 @@ HEADERS += \
     lapengine.h \
     qmlbridge.h \
     serialengine.h \
-    signalviewengine.h
+    signalviewengine.h \
+    cruise_control.h
 

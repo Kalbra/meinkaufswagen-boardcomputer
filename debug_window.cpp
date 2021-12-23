@@ -34,6 +34,9 @@ Debug::Debug(BackEnd *backend): backend(backend){
     connect(reset_tigger, &QPushButton::clicked, backend, &BackEnd::Reset);
     connect(light_tigger, &QPushButton::clicked, backend, &BackEnd::LightTrigger);
     connect(enter_gas, &QPushButton::clicked, this, &Debug::enterGas);
+    connect(cruise_control_high, &QPushButton::clicked, backend, &BackEnd::CruiseControlUpButton);
+    connect(cruise_control_low, &QPushButton::clicked, backend, &BackEnd::CruiseControlDownButton);
+    connect(cruise_control_trigger, &QPushButton::clicked, backend, &BackEnd::CruiseControlTriggerButton);
 
     window->show();
 }
