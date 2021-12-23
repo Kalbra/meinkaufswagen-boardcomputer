@@ -669,7 +669,7 @@ Window {
             width: 400
             height: 71
             color: "#ffffff"
-            text: qml_bridge.speed_string
+            text: qml_bridge.speed_string + " km/h"
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 53
             font.family: "Arial"

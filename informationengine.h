@@ -3,13 +3,14 @@
 
 #include <QObject>
 #include "qmlbridge.h"
+#include "signalviewengine.h"
 
 class InformationEngine : public QObject
 {
     Q_OBJECT
 
 public:
-    InformationEngine(QMLBridge *qml_bridge);
+    InformationEngine(QMLBridge *qml_bridge, SignalViewEngine *engine_temp, SignalViewEngine *battery_status);
 
     //Limits
     double limits[4][2] = {
@@ -27,8 +28,11 @@ public:
 private:
     QMLBridge *qml_bridge;
 
+    SignalViewEngine *engine_temp;
+    SignalViewEngine *battery_status;
+
     double dataToDouble(QByteArray data);
-    void checkLimits(uint8_t id);
+    void checkLimits(uint8_t id, double data, SignalViewEngine *engine);
 
 };
 

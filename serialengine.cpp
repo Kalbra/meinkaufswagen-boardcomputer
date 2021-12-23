@@ -1,6 +1,6 @@
 #include "serialengine.h"
 
-SerialEngine::SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString port_name, SignalViewEngine *serial_status) : qml_bridge(qml_bridge), lap_engine(lap_engine){
+SerialEngine::SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString port_name, SignalViewEngine *serial_status, InformationEngine *information_engine) : qml_bridge(qml_bridge), lap_engine(lap_engine), information_engine(information_engine){
     serial.setPortName(port_name);
     serial.setBaudRate(QSerialPort::Baud115200);
 
@@ -32,7 +32,7 @@ void SerialEngine::dataEvaluate(){
 
             //Speed calculation and inserting
             double speed = (((double)WHEEL_CIRCUMFERENCE / 100) / (delta.count()) + SERIAL_TIME_OFFSET) * 3.6;
-            qml_bridge->setSpeed(QString::number(speed, 'f', 1));
+            qml_bridge->setSpeed(QString(QString::number(speed, 'f', 1)));
 
             qDebug() << "Eich time:"<< delta.count();
 

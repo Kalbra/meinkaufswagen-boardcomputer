@@ -7,12 +7,14 @@ BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_brid
     SignalViewEngine *battery_status = new SignalViewEngine(qml_bridge, BATTERY_STATUS);
     SignalViewEngine *serial_status = new SignalViewEngine(qml_bridge, SERIAL_STATUS);
 
-    serial_engine = new SerialEngine(qml_bridge, lap_engine, port_name, serial_status);
+    InformationEngine *information_engine = new InformationEngine(qml_bridge, engine_temp, battery_status);
+
+    serial_engine = new SerialEngine(qml_bridge, lap_engine, port_name, serial_status, information_engine);
     serial_engine->moveToThread(&serialThread);
     serialThread.start();
 
 
-    engine_temp->error();
+    //engine_temp->error();
     //battery_status->waring();
     //oil_temp->waring();
     //serial_status->error();
