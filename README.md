@@ -44,8 +44,10 @@ Types:
 ---------------
 
 Structur send:
-| Gas      |Licht on/off|
+| Gas      |Info|
 |----------|------------|
-| uint16_t |   bool     |
-|  0 \| 1  |     2      | 
+| uint8_t |   bool/uint16_t     |
+|   0  |     1/2      | 
 
+- 0: Light trigger(0=off, 1=on)
+- 1: Gas level 
