@@ -13,7 +13,7 @@ BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_brid
     serial_engine->moveToThread(&serialThread);
     serialThread.start();
 
-    cruise_control = new CruiseControl(qml_bridge);
+    cruise_control = new CruiseControl(qml_bridge, serial_engine);
 
     //Sets the display to the main field
     qml_bridge->setDisplayField(0);
@@ -36,17 +36,19 @@ void BackEnd::LapTrigger(){
 
 void BackEnd::LightTrigger(){
     if(light_on){
+        serial_engine->sendLightOff();
         qml_bridge->setLight_off();
         light_on = false;
     }
     else {
+        serial_engine->sendLightOn();
         qml_bridge->setLight_on();
         light_on = true;
     }
 }
 
-void BackEnd::GasPoti(uint level){
-    qDebug() << level;
+void BackEnd::GasPoti(uint16_t level){
+    cruise_control->evaluateGas(level);
 }
 
 void BackEnd::CruiseControlUpButton(){
@@ -78,4 +80,5 @@ void BackEnd::Reset(){
     qml_bridge->setRPM("-- --");
     qml_bridge->setGenerator_current("-- --");
     qml_bridge->setUsed_current("-- --");
+    qml_bridge->setRPMProgressbar(495);
 }

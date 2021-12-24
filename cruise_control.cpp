@@ -1,6 +1,6 @@
 #include "cruise_control.h"
 
-CruiseControl::CruiseControl(QMLBridge *qml_bridge) : qml_bridge(qml_bridge){
+CruiseControl::CruiseControl(QMLBridge *qml_bridge, SerialEngine *serial_engine) : qml_bridge(qml_bridge), serial_engine(serial_engine){
     reset();
 }
 
@@ -14,12 +14,12 @@ void CruiseControl::updateField(){
     }
 }
 
-void CruiseControl::evaluateGas(uint level){
+void CruiseControl::evaluateGas(uint16_t level){
     if(on_off) {
         //dlskjf
     }
     else {
-        qDebug() << level;
+        serial_engine->sendGas(level);
     }
 }
 

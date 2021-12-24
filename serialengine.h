@@ -34,6 +34,10 @@ class SerialEngine : public QObject
 
 public:
     SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString port_name, SignalViewEngine *serial_status, InformationEngine *information_engine);
+    void sendLightOn();
+    void sendLightOff();
+    void sendGas(uint16_t level);
+
     void reset();
 
 public slots:

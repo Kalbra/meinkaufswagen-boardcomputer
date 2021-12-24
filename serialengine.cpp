@@ -4,7 +4,7 @@ SerialEngine::SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString
     serial.setPortName(port_name);
     serial.setBaudRate(QSerialPort::Baud115200);
 
-    if(!serial.open(QIODevice::ReadOnly)){
+    if(!serial.open(QIODevice::ReadWrite)){
         serial_status->error();
         qDebug() << serial.errorString();
     }
@@ -79,6 +79,21 @@ void SerialEngine::dataEvaluate(){
         default:
             qDebug() << "Cant decode the serial data";
     }
+}
+
+void SerialEngine::sendLightOn(){
+    const char tmp[2] = {0, 1};
+    serial.write(tmp, 2);
+}
+
+void SerialEngine::sendLightOff(){
+    const char tmp[2] = {0, 0};
+    serial.write(tmp, 2);
+}
+
+void SerialEngine::sendGas(uint16_t level){
+    char tmp[3] = {1, (char)(level & 0xFF), (char)(level >> 8)};
+    serial.write(tmp, 3);
 }
 
 void SerialEngine::RPMCalc(int rpm){

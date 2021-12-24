@@ -31,7 +31,7 @@
  *          - Gas
  *
  * X q proberty für alle anderen werte
- * - zweites menu mit allen daten
+ * X zweites menu mit allen daten
  * X laptime engine
  * - tempomat
  *
@@ -68,7 +68,6 @@ int main(int argc, char *argv[]){
     Debug debug_window(backend);
     debug_window.show();
     
-
 
     return app.exec();
 }
