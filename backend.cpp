@@ -14,12 +14,6 @@ BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_brid
     serialThread.start();
 
     cruise_control = new CruiseControl(qml_bridge);
- //connect(&serial, &QSerialPort::readyRead, this, &SerialEngine::dataEvaluate);
-    //connect(this, &BackEnd::CruiseControlTriggerButton, cruise_control, &CruiseControl::setOnOff);
-    //engine_temp->error();
-    //battery_status->waring();
-    //oil_temp->waring();
-    //serial_status->error();
 
     //Sets the display to the main field
     qml_bridge->setDisplayField(0);

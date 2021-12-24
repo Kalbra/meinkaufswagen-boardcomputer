@@ -121,10 +121,14 @@ void LapEngine::updateLapField(){
         time_string = "-- --";
     }
     qml_bridge->setLap_time(time_string);
+
+    total_time = QDateTime::currentDateTime().toMSecsSinceEpoch() - start_time;
+    qml_bridge->setTotal_time(QTime::fromMSecsSinceStartOfDay(total_time).toString("hh:mm:ss"));
 }
 
 void LapEngine::reset(){
     lap_times.clear();
+    start_time = QDateTime::currentDateTime().toMSecsSinceEpoch();
 
     for(uint8_t i = 0; i <= 7; i++){
         lap_times.append(QDateTime());

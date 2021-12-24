@@ -41,7 +41,8 @@ void SerialEngine::dataEvaluate(){
             total_speed_triggers += 1;
             qml_bridge->setTotal_distance(QString(QString::number(total_distance, 'f', 2) + "km"));
 
-            //lap_engine-
+            //Caluclation the avarage speed
+            qml_bridge->setAverage_speed(QString(QString::number(total_distance / (static_cast<double>(lap_engine->total_time) / 3600000), 'f', 2) + "km/h Ø"));
 
             break;
         }
