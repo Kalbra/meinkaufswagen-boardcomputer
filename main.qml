@@ -12,73 +12,6 @@ Window {
     title: qsTr("Board Computer")
     //flags: Qt.FramelessWindowHint | Qt.Window
 
-    Item {
-        id: gird
-        x: 0
-        y: 0
-        width: 800
-        height: 480
-
-        Rectangle {
-            id: rectangle
-            x: 0
-            y: 0
-            width: 401
-            height: 67
-            color: "#00000000"
-            border.color: "#ffffff"
-        }
-
-        Rectangle {
-            id: rectangle1
-            x: 400
-            y: 0
-            width: 400
-            height: 67
-            color: "#00000000"
-            border.color: "#ffffff"
-        }
-
-        Rectangle {
-            id: rectangle2
-            x: 0
-            y: 413
-            width: 401
-            height: 67
-            color: "#00000000"
-            border.color: "#ffffff"
-        }
-
-        Rectangle {
-            id: rectangle3
-            x: 400
-            y: 413
-            width: 400
-            height: 67
-            color: "#00000000"
-            border.color: "#ffffff"
-        }
-
-        Rectangle {
-            id: rectangle4
-            x: 799
-            y: 66
-            width: 1
-            height: 348
-            color: "#00000000"
-            border.color: "#ffffff"
-        }
-
-        Rectangle {
-            id: rectangle6
-            x: 0
-            y: 66
-            width: 1
-            height: 348
-            color: "#00000000"
-            border.color: "#ffffff"
-        }
-    }
 
 
     Item {
@@ -418,12 +351,12 @@ Window {
             rotation: 90
             gradient: Gradient {
                 GradientStop {
-                    position: 0.99
+                    position: 1
                     color: "#0aff4b"
                 }
 
                 GradientStop {
-                    position: 0.519
+                    position: 0.5
                     color: "#ffce00"
                 }
 
@@ -439,12 +372,12 @@ Window {
 
         Rectangle {
             id: rpmoverlay
-            x: qml_bridge.rpm_progressbar - 189
+            x: 800 - qml_bridge.rpm_progressbar
             y: 377
             width: qml_bridge.rpm_progressbar
             height: 36
             color: "#000000"
-            rotation: 0
+            rotation: -180
         }
 
         Rectangle {
@@ -704,10 +637,77 @@ Window {
             verticalAlignment: Text.AlignVCenter
         }
     }
+    Item {
+        id: gird
+        x: 0
+        y: 0
+        width: 800
+        height: 480
+
+        Rectangle {
+            id: rectangle
+            x: 0
+            y: 0
+            width: 401
+            height: 67
+            color: "#00000000"
+            border.color: "#ffffff"
+        }
+
+        Rectangle {
+            id: rectangle1
+            x: 400
+            y: 0
+            width: 400
+            height: 67
+            color: "#00000000"
+            border.color: "#ffffff"
+        }
+
+        Rectangle {
+            id: rectangle2
+            x: 0
+            y: 413
+            width: 401
+            height: 67
+            color: "#00000000"
+            border.color: "#ffffff"
+        }
+
+        Rectangle {
+            id: rectangle3
+            x: 400
+            y: 413
+            width: 400
+            height: 67
+            color: "#00000000"
+            border.color: "#ffffff"
+        }
+
+        Rectangle {
+            id: rectangle4
+            x: 799
+            y: 66
+            width: 1
+            height: 348
+            color: "#00000000"
+            border.color: "#ffffff"
+        }
+
+        Rectangle {
+            id: rectangle6
+            x: 0
+            y: 66
+            width: 1
+            height: 348
+            color: "#00000000"
+            border.color: "#ffffff"
+        }
+    }
 }
 
 /*##^##
 Designer {
-    D{i:8;invisible:true}
+    D{i:54;invisible:true}
 }
 ##^##*/

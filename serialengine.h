@@ -15,6 +15,7 @@
 #define SERIAL_TIME_OFFSET -0.01
 #define MAX_RPM 1000
 #define MIN_RPM 3000
+#define RPM_MULTIPLYER 3
 
 #define SPEED_EVENT                  0
 #define LAP_EVENT                    1

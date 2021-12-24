@@ -36,6 +36,12 @@ void SerialEngine::dataEvaluate(){
 
             qDebug() << "Eich time:"<< delta.count();
 
+            //Calc of the rpm
+            double rpm = ((1 / delta.count()) * 60) * RPM_MULTIPLYER;
+            qml_bridge->setRPM(QString(QString::number(rpm, 'f', 0) + "RPM"));
+            //Calc rpm range for rpm bar
+            qml_bridge->setRPMProgressbar((static_cast<int>(rpm) - MIN_RPM) * 494 / (MAX_RPM - MIN_RPM));
+
             //Calculates the total distance
             double total_distance = ((double)WHEEL_CIRCUMFERENCE / 100000) * total_speed_triggers;
             total_speed_triggers += 1;
