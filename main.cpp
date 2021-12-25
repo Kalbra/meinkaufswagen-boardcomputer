@@ -31,7 +31,7 @@
  *          - Gas
  *
  * X q proberty für alle anderen werte
- * - zweites menu mit allen daten
+ * X zweites menu mit allen daten
  * X laptime engine
  * - tempomat
  *
@@ -42,6 +42,9 @@
  */
 
 int main(int argc, char *argv[]){   
+    //The size of the double is important for the serial evulation
+    static_assert(sizeof(double) == 8, "The size of double is not 8");
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QApplication app(argc, argv);
@@ -65,7 +68,6 @@ int main(int argc, char *argv[]){
     Debug debug_window(backend);
     debug_window.show();
     
-
 
     return app.exec();
 }

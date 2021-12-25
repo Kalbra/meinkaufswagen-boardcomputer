@@ -21,10 +21,14 @@ public:
     void updateLapField();
     void reset();
 
+    qint64 total_time;
+
 private:
     QMLBridge *qml_bridge;
 
     QVector<QDateTime> lap_times;
+
+    qint64 start_time;
 
 };
 
