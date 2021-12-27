@@ -155,7 +155,7 @@ Window {
             }
 
             Rectangle {
-                id: ignore
+                id: light
                 objectName: "ignore"
                 x: 1
                 y: 298
@@ -245,6 +245,29 @@ Window {
                     horizontalAlignment: Text.AlignHCenter
                     font.family: "Arial"
                 }
+            }
+
+            Rectangle {
+                id: talk
+                x: 1
+                y: 249
+                width: 127
+                height: 49
+                color: qml_bridge.talk_color
+                Text {
+                    id: talk_text
+                    x: 0
+                    y: 0
+                    width: 127
+                    height: 49
+                    color: "#ffffff"
+                    text: qsTr("TALK")
+                    font.pixelSize: 30
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    font.family: "Arial"
+                }
+                objectName: "ignore"
             }
 
 
@@ -708,6 +731,8 @@ Window {
 
 /*##^##
 Designer {
-    D{i:54;invisible:true}
+    D{i:0}D{i:3;invisible:true}D{i:21}D{i:23;invisible:true}D{i:24;invisible:true}D{i:25;invisible:true}
+D{i:26;invisible:true}D{i:27;invisible:true}D{i:30;invisible:true}D{i:35;invisible:true}
+D{i:36;invisible:true}D{i:37;invisible:true}D{i:56;invisible:true}
 }
 ##^##*/

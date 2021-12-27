@@ -10,12 +10,8 @@
 #include "qmlbridge.h"
 #include "informationengine.h"
 #include "signalviewengine.h"
+#include "definitions.h"
 
-#define WHEEL_CIRCUMFERENCE 20//IN CM
-#define SERIAL_TIME_OFFSET -0.01
-#define MAX_RPM 1000
-#define MIN_RPM 3000
-#define RPM_MULTIPLYER 3
 
 #define SPEED_EVENT                  0
 #define LAP_EVENT                    1
@@ -33,9 +29,11 @@ class SerialEngine : public QObject
     QThread serialThread;
 
 public:
-    SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString port_name, SignalViewEngine *serial_status, InformationEngine *information_engine);
+    SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, SignalViewEngine *serial_status, InformationEngine *information_engine);
     void sendLightOn();
     void sendLightOff();
+    void sendTalkOn();
+    void sendTalkOff();
     void sendGas(uint16_t level);
 
     void reset();

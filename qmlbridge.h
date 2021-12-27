@@ -33,6 +33,8 @@ class QMLBridge : public QObject
     Q_PROPERTY(QString battery_charge MEMBER battery_charge NOTIFY battery_chargeChanged)
     //Light color
     Q_PROPERTY(QString light_color MEMBER light_color NOTIFY light_colorChanged)
+    //Talk color
+    Q_PROPERTY(QString talk_color MEMBER talk_color NOTIFY talk_colorChanged)
     //RPM progressbar
     Q_PROPERTY(int rpm_progressbar MEMBER rpm_progressbar NOTIFY rpm_progressbarChanged)
     //Engine temp
@@ -131,6 +133,11 @@ public:
     void setLight_on(){light_color = "#00ff22"; emit light_colorChanged();}
     void setLight_off(){light_color = "black"; emit light_colorChanged();}
 
+    //Talk color on/off
+    QString talk_color;
+    void setTalk_on(){talk_color = "#00ff22"; emit talk_colorChanged();}
+    void setTalk_off(){talk_color = "black"; emit talk_colorChanged();}
+
     //Lap display
     QString delta1;
     QString delta2;
@@ -185,6 +192,8 @@ signals:
     void battery_chargeChanged();
     //Light color
     void light_colorChanged();
+    //Talk color
+    void talk_colorChanged();
     //RPM progressbar
     void rpm_progressbarChanged();
     //Engine temp

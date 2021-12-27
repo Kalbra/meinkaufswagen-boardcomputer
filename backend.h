@@ -22,7 +22,7 @@ class BackEnd : public QObject
     QThread serialThread;
 
 public:
-    BackEnd(QMLBridge *qml_bridge, QString port_name);
+    BackEnd(QMLBridge *qml_bridge);
 
     //Resets all date like total time or distance
     void Reset();
@@ -42,6 +42,7 @@ public slots:
     void SwitchMenuButton();
     void LapTrigger();
     void LightTrigger();
+    void TalkTrigger();
 
 protected:
 
@@ -52,6 +53,7 @@ private:
     LapEngine *lap_engine = new LapEngine(qml_bridge);
 
     bool light_on = false;
+    bool talk_on = false;
     uint display_id = 0;
 };
 

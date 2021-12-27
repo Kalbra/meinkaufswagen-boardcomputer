@@ -44,6 +44,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     backend.h \
     debug_window.h \
+    definitions.h \
     informationengine.h \
     lapengine.h \
     qmlbridge.h \

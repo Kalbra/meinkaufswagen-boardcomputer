@@ -1,7 +1,7 @@
 #include "backend.h"
 
 
-BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_bridge){
+BackEnd::BackEnd(QMLBridge *qml_bridge) : qml_bridge(qml_bridge){
     SignalViewEngine *engine_temp = new SignalViewEngine(qml_bridge, ENGINE_TEMP);
     SignalViewEngine *oil_temp = new SignalViewEngine(qml_bridge, OIL_TEMP);
     SignalViewEngine *battery_status = new SignalViewEngine(qml_bridge, BATTERY_STATUS);
@@ -9,7 +9,7 @@ BackEnd::BackEnd(QMLBridge *qml_bridge, QString port_name) : qml_bridge(qml_brid
 
     InformationEngine *information_engine = new InformationEngine(qml_bridge, engine_temp, battery_status);
 
-    serial_engine = new SerialEngine(qml_bridge, lap_engine, port_name, serial_status, information_engine);
+    serial_engine = new SerialEngine(qml_bridge, lap_engine, serial_status, information_engine);
     serial_engine->moveToThread(&serialThread);
     serialThread.start();
 
@@ -46,6 +46,20 @@ void BackEnd::LightTrigger(){
         light_on = true;
     }
 }
+
+void BackEnd::TalkTrigger(){
+    if(talk_on){
+        serial_engine->sendTalkOff();
+        qml_bridge->setTalk_off();
+        talk_on = false;
+    }
+    else {
+        serial_engine->sendTalkOn();
+        qml_bridge->setTalk_on();
+        talk_on = true;
+    }
+}
+
 
 void BackEnd::GasPoti(uint16_t level){
     cruise_control->evaluateGas(level);

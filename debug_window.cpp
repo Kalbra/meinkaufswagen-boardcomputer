@@ -13,6 +13,7 @@ Debug::Debug(BackEnd *backend): backend(backend){
     QPushButton *cruise_control_low = new QPushButton("Cruise Control Low");
     QPushButton *lap_trigger = new QPushButton("Lap Trigger");
     QPushButton *light_tigger = new QPushButton("Light Trigger");
+    QPushButton *talk_trigger = new QPushButton("Talk Trigger");
     QPushButton *reset_tigger = new QPushButton("Reset");
     gas_input = new QLineEdit("");
     QPushButton *enter_gas = new QPushButton("Enter GAS");
@@ -25,6 +26,7 @@ Debug::Debug(BackEnd *backend): backend(backend){
     layout->addWidget(cruise_control_low);
     layout->addWidget(lap_trigger);
     layout->addWidget(light_tigger);
+    layout->addWidget(talk_trigger);
     layout->addWidget(reset_tigger);
     layout->addWidget(gas_input);
     layout->addWidget(enter_gas);
@@ -33,6 +35,7 @@ Debug::Debug(BackEnd *backend): backend(backend){
     connect(lap_trigger, &QPushButton::clicked, backend, &BackEnd::LapTrigger);
     connect(reset_tigger, &QPushButton::clicked, backend, &BackEnd::Reset);
     connect(light_tigger, &QPushButton::clicked, backend, &BackEnd::LightTrigger);
+    connect(talk_trigger, &QPushButton::clicked, backend, &BackEnd::TalkTrigger);
     connect(enter_gas, &QPushButton::clicked, this, &Debug::enterGas);
     connect(cruise_control_high, &QPushButton::clicked, backend, &BackEnd::CruiseControlUpButton);
     connect(cruise_control_low, &QPushButton::clicked, backend, &BackEnd::CruiseControlDownButton);

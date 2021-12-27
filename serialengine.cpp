@@ -1,7 +1,7 @@
 #include "serialengine.h"
 
-SerialEngine::SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, QString port_name, SignalViewEngine *serial_status, InformationEngine *information_engine) : qml_bridge(qml_bridge), lap_engine(lap_engine), information_engine(information_engine){
-    serial.setPortName(port_name);
+SerialEngine::SerialEngine(QMLBridge *qml_bridge, LapEngine *lap_engine, SignalViewEngine *serial_status, InformationEngine *information_engine) : qml_bridge(qml_bridge), lap_engine(lap_engine), information_engine(information_engine){
+    serial.setPortName(SERIAL_PORT_NAME);
     serial.setBaudRate(QSerialPort::Baud115200);
 
     if(!serial.open(QIODevice::ReadWrite)){
@@ -91,8 +91,18 @@ void SerialEngine::sendLightOff(){
     serial.write(tmp, 2);
 }
 
+void SerialEngine::sendTalkOn(){
+    const char tmp[2] = {1, 1};
+    serial.write(tmp, 2);
+}
+
+void SerialEngine::sendTalkOff(){
+    const char tmp[2] = {1, 0};
+    serial.write(tmp, 2);
+}
+
 void SerialEngine::sendGas(uint16_t level){
-    char tmp[3] = {1, (char)(level & 0xFF), (char)(level >> 8)};
+    char tmp[3] = {2, (char)(level & 0xFF), (char)(level >> 8)};
     serial.write(tmp, 3);
 }
 
