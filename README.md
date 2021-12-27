@@ -50,4 +50,21 @@ Structur send:
 |   0  |     1/2      | 
 
 - 0: Light trigger(0=off, 1=on)
-- 1: Gas level (little ending)
+- 1: Talk trigger(0=off, 1=on)
+- 2: Gas level (little ending)
+
+
+### Arduino definitions
+
+- Baudrate to opertate: 115200
+- Pins:
+  - 0: TX
+  - 1: RX
+  - 2: Speed sensor
+  - 3: Breake sensor
+  - 5: Servo(Gas)
+  - 7: Lap trigger
+  - A0: Engine temp
+  - A1: Battery voltage
+  - A2: Generated current
+  - A3: Used current
